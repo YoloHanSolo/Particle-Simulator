@@ -67,8 +67,8 @@ class Particle {
       if (this.x > p.x) { 
         sign = -1;
       }   
-      if (this.attraction == p.attraction) {
-        //gravity = -gravity;
+      if (this.attraction == p.attraction && this.attraction != 0 && p.attraction != 0) {
+        gravity = -gravity * 0.95;
       }
 
       this.vx += sign * cos(angle) * gravity * e.dt;

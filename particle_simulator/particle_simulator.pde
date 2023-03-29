@@ -1,22 +1,21 @@
 ArrayList<Particle> particles = new ArrayList<Particle>();
 Enviroment e;
 
-int example = 2;
+int example = 0;
 
 int frame = 0;
 boolean recording = false;
 
 void setup() {
-  size(400, 400);
+  size(800, 800);
+  //fullScreen();
   background(0);
   textSize(12);
   
   // SOLAR
   if (example == 0) {
-    e = new Enviroment(1, 256, "open", false, 0);
+    e = new Enviroment(0.01, 256, "open", "no", 0);
     particles.add(new Particle(width / 2, 500, 0, 0, 1000000, 0, "sun"));
-    particles.add(new Particle(width / 2, 600, 120, 0, 1, 0, "tara"));
-    /*
     particles.add(new Particle(width / 2, 525, 185, 0, 1, 0, "mercury"));
     particles.add(new Particle(width / 2, 555, 130, 0, 10, 0, "venus"));
     particles.add(new Particle(width / 2, 580, 110, 0, 10, 0, "earth"));
@@ -27,10 +26,9 @@ void setup() {
     particles.add(new Particle(width / 2, 765, 95, 0, 0.01, 0, "callisto"));
     particles.add(new Particle(width / 2 + 15, 750, 55, -25, 0.01, 0, "io"));
     particles.add(new Particle(width / 2, 900, 50, 0, 3000, 0, "saturn"));
-    particles.add(new Particle(width / 2, 910, 55, 0, 0.01, 0, "titan"));
-    */   
+    particles.add(new Particle(width / 2, 910, 55, 0, 0.01, 0, "titan"));  
   } else if (example == 1) {
-    e = new Enviroment(0.01, 5, "repeat", true, 0);
+    e = new Enviroment(0.01, 5, "repeat", "combine", 0);
     particles.add(new Particle(width / 2, height / 2, 0, 0, 1000000, 0, "sun"));
     float x, y, vx, vy;
     for (int i=0; i<500; i++) {
@@ -44,14 +42,14 @@ void setup() {
   
   else if (example == 2) {
     Particle p;
-    e = new Enviroment(0.1, 64, "repeat", false, 0);
-    for (int i=0; i<20; i++) {
-      p = new Particle(random(0, width), random(0, height), 0, 0, 100, 0, "1");
+    e = new Enviroment(0.1, 20, "repeat", "stop", 0.1);
+    for (int i=0; i<10; i++) {
+      p = new Particle(random(width / 2 - 50, width / 2 + 50), random(height / 2 - 50, height / 2 + 50), 0, 0, 100, 0, "[ ]");
       p.attraction = 1;
       particles.add(p);
     }
-    for (int i=0; i<20; i++) {
-      p = new Particle(random(0, width), random(0, height), 0, 0, 100, 0, "2");
+    for (int i=0; i<100; i++) {
+      p = new Particle(random(width / 2 - 50, width / 2 + 50), random(height / 2 - 50, height / 2 + 50), 0, 0, 100, 0, "X");
       p.attraction = 2;
       particles.add(p);
     }
